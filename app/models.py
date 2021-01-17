@@ -146,7 +146,7 @@ def handle_text_message(event):
         if(response):
             carousels = []
             for task in response:
-                carousels.append(CarouselColumn(image_url='https://via.placeholder.com/1024x1024',
+                carousels.append(CarouselColumn(thumbnail_image_url='https://via.placeholder.com/1024x1024',
                                     title=task['taskTitle'],text="委託人:{}".format(task['taskOwnerName']),
                                     action=MessageAction(label='進行任務', text=task['taskId']))) 
             image_carousel_template = CarouselTemplate(columns=carousels)
