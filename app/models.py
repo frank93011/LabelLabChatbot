@@ -36,12 +36,12 @@ def handle_text_message(event):
             if(response):
                 print(profile)
                 totalFinished = sum(list(response.values()))
-                line_bot_api.reply_message(
-                    event.reply_token, [
-                        TextSendMessage(text='Display name: ' + profile.display_name),
-                        TextSendMessage(text='UserId: ' + str(event.source.user_id))
-                    ]
-                )
+                # line_bot_api.reply_message(
+                #     event.reply_token, [
+                #         TextSendMessage(text='Display name: ' + profile.display_name),
+                #         TextSendMessage(text='UserId: ' + str(event.source.user_id))
+                #     ]
+                # )
                 bubble = BubbleContainer(
                 direction='ltr',
                 hero=ImageComponent(
