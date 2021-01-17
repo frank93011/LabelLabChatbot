@@ -34,12 +34,105 @@ def handle_text_message(event):
             profile = line_bot_api.get_profile(event.source.user_id)
             response = login(event.source.user_id)
             if(response):
+                print(profile)
+                totalFinished = sum(list(response.values()))
                 line_bot_api.reply_message(
                     event.reply_token, [
                         TextSendMessage(text='Display name: ' + profile.display_name),
                         TextSendMessage(text='UserId: ' + str(event.source.user_id))
                     ]
                 )
+                bubble = BubbleContainer(
+                direction='ltr',
+                hero=ImageComponent(
+                    url=profile.pictureUrl,
+                    size='full',
+                    aspect_ratio='1:1',
+                    aspect_mode='cover'
+                ),
+                body=BoxComponent(
+                    layout='vertical',
+                    contents=[
+                        # title
+                        TextComponent(text=profile.display_name, weight='bold', size='xl'),
+                        # info
+                        BoxComponent(
+                            layout='vertical',
+                            margin='lg',
+                            spacing='sm',
+                            contents=[
+                                BoxComponent(
+                                    layout='baseline',
+                                    spacing='sm',
+                                    contents=[
+                                        TextComponent(
+                                            text='總共完成{}項任務'.format(totalFinished),
+                                            color='#aaaaaa',
+                                            weight='bold',
+                                            size='md',
+                                            flex=1
+                                        ),
+                                    ],
+                                ),
+                                BoxComponent(
+                                    layout='baseline',
+                                    spacing='sm',
+                                    contents=[
+                                        TextComponent(
+                                            text='分類任務',
+                                            color='#aaaaaa',
+                                            size='sm',
+                                            flex=1
+                                        ),
+                                        TextComponent(
+                                            text=str(response['CLAS']),
+                                            wrap=True,
+                                            color='#666666',
+                                            size='sm',
+                                            flex=5
+                                        )
+                                    ],
+                                ),
+                                BoxComponent(
+                                    layout='baseline',
+                                    spacing='sm',
+                                    contents=[
+                                        TextComponent(
+                                            text='NER任務',
+                                            color='#aaaaaa',
+                                            size='sm',
+                                            flex=1
+                                        ),
+                                        TextComponent(
+                                            text=str(response['NER']),
+                                            wrap=True,
+                                            color='#666666',
+                                            size='sm',
+                                            flex=5,
+                                        ),
+                                    ],
+                                ),
+                            ],
+                        )
+                    ],
+                ),
+                footer=BoxComponent(
+                    layout='vertical',
+                    spacing='sm',
+                    contents=[
+                        ButtonComponent(
+                            style='primary',
+                            height='sm',
+                            action=URIAction(label='我的Labelr檔案', uri="https://line-label.herokuapp.com/Profile")
+                        )
+                    ]
+                ),
+            )
+            message = FlexSendMessage(alt_text="hello", contents=bubble)
+            line_bot_api.reply_message(
+                event.reply_token,
+                message
+            )
             
         else:
             line_bot_api.reply_message(
