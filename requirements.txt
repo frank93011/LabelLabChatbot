@@ -1,0 +1,4 @@
+line-bot-sdk
+flask
+gunicorn==19.9.0
+werkzeug>=0.15.4
