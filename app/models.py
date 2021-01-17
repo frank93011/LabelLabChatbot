@@ -46,7 +46,7 @@ def handle_text_message(event):
                 direction='ltr',
                 hero=ImageComponent(
                     url=profile.picture_url,
-                    size='fit',
+                    size='full',
                     aspect_ratio='1:1',
                     aspect_mode='cover'
                 ),
