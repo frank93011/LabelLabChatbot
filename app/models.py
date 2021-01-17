@@ -21,6 +21,7 @@ import json
 import os
 import sys
 import tempfile
+from utils.query import login
 from flask import Flask, request, abort, send_from_directory
 
 
@@ -31,12 +32,15 @@ def handle_text_message(event):
     if text == 'profile':
         if isinstance(event.source, SourceUser):
             profile = line_bot_api.get_profile(event.source.user_id)
-            line_bot_api.reply_message(
-                event.reply_token, [
-                    TextSendMessage(text='Display name: ' + profile.display_name),
-                    TextSendMessage(text='Status message: ' + str(profile.status_message))
-                ]
-            )
+            response = login(event.source.user_id)
+            if(response):
+                line_bot_api.reply_message(
+                    event.reply_token, [
+                        TextSendMessage(text='Display name: ' + profile.display_name),
+                        TextSendMessage(text='UserId: ' + str(event.source.user_id))
+                    ]
+                )
+            
         else:
             line_bot_api.reply_message(
                 event.reply_token,
@@ -61,49 +65,6 @@ def handle_text_message(event):
             event.source.user_id, [
                 TextSendMessage(text='PUSH!'),
             ]
-        )
-    elif text == 'multicast':
-        line_bot_api.multicast(
-            [event.source.user_id], [
-                TextSendMessage(text='THIS IS A MULTICAST MESSAGE'),
-            ]
-        )
-    elif text == 'broadcast':
-        line_bot_api.broadcast(
-            [
-                TextSendMessage(text='THIS IS A BROADCAST MESSAGE'),
-            ]
-        )
-    elif text.startswith('broadcast '):  # broadcast 20190505
-        date = text.split(' ')[1]
-        print("Getting broadcast result: " + date)
-        result = line_bot_api.get_message_delivery_broadcast(date)
-        line_bot_api.reply_message(
-            event.reply_token, [
-                TextSendMessage(text='Number of sent broadcast messages: ' + date),
-                TextSendMessage(text='status: ' + str(result.status)),
-                TextSendMessage(text='success: ' + str(result.success)),
-            ]
-        )
-    elif text == 'bye':
-        if isinstance(event.source, SourceGroup):
-            line_bot_api.reply_message(
-                event.reply_token, TextSendMessage(text='Leaving group'))
-            line_bot_api.leave_group(event.source.group_id)
-        elif isinstance(event.source, SourceRoom):
-            line_bot_api.reply_message(
-                event.reply_token, TextSendMessage(text='Leaving group'))
-            line_bot_api.leave_room(event.source.room_id)
-        else:
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text="Bot can't leave from 1:1 chat"))
-    elif text == 'image':
-        url = request.url_root + '/static/logo.png'
-        app.logger.info("url=" + url)
-        line_bot_api.reply_message(
-            event.reply_token,
-            ImageSendMessage(url, url)
         )
     elif text == 'confirm':
         confirm_template = ConfirmTemplate(text='Do it?', actions=[
@@ -152,8 +113,6 @@ def handle_text_message(event):
         template_message = TemplateSendMessage(
             alt_text='ImageCarousel alt text', template=image_carousel_template)
         line_bot_api.reply_message(event.reply_token, template_message)
-    elif text == 'imagemap':
-        pass
     elif text == 'flex':
         bubble = BubbleContainer(
             direction='ltr',
@@ -475,8 +434,8 @@ def handle_sticker_message(event):
     line_bot_api.reply_message(
         event.reply_token,
         StickerSendMessage(
-            package_id=event.message.package_id,
-            sticker_id=event.message.sticker_id)
+            package_id=event.message.package_id+1,
+            sticker_id=event.message.sticker_id+1)
     )
 
 
