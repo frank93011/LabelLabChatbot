@@ -46,7 +46,7 @@ def handle_text_message(event):
                 direction='ltr',
                 hero=ImageComponent(
                     url=profile.picture_url,
-                    size='lg',
+                    size='fit',
                     aspect_ratio='1:1',
                     aspect_mode='cover'
                 ),
@@ -54,7 +54,7 @@ def handle_text_message(event):
                     layout='vertical',
                     contents=[
                         # title
-                        TextComponent(text=profile.display_name, weight='bold', size='xl'),
+                        TextComponent(text=profile.display_name, weight='bold', size='xl', align= "center"),
                         # info
                         BoxComponent(
                             layout='vertical',
@@ -67,6 +67,7 @@ def handle_text_message(event):
                                     contents=[
                                         TextComponent(
                                             text='總共完成{}項任務'.format(totalFinished),
+                                            align= "center",
                                             color='#aaaaaa',
                                             weight='bold',
                                             size='md',
@@ -80,12 +81,14 @@ def handle_text_message(event):
                                     contents=[
                                         TextComponent(
                                             text='分類任務',
+                                            align= "center",
                                             color='#aaaaaa',
                                             size='sm',
-                                            flex=5
+                                            flex=3
                                         ),
                                         TextComponent(
                                             text=str(response['CLAS']),
+                                            align= "center",
                                             wrap=True,
                                             color='#666666',
                                             size='sm',
@@ -99,12 +102,14 @@ def handle_text_message(event):
                                     contents=[
                                         TextComponent(
                                             text='NER任務',
+                                            align= "center",
                                             color='#aaaaaa',
                                             size='sm',
-                                            flex=5
+                                            flex=3
                                         ),
                                         TextComponent(
                                             text=str(response['NER']),
+                                            align= "center",
                                             wrap=True,
                                             color='#666666',
                                             size='sm',
