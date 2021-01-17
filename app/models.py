@@ -21,7 +21,7 @@ import json
 import os
 import sys
 import tempfile
-from utils.query import login
+from utils.query import login, get_all_tasks
 from flask import Flask, request, abort, send_from_directory
 
 
@@ -88,7 +88,6 @@ def handle_text_message(event):
                                         ),
                                         TextComponent(
                                             text=str(response['CLAS']),
-                                            align= "center",
                                             wrap=True,
                                             color='#666666',
                                             size='sm',
@@ -102,7 +101,6 @@ def handle_text_message(event):
                                     contents=[
                                         TextComponent(
                                             text='NER任務',
-                                            align= "center",
                                             color='#aaaaaa',
                                             size='sm',
                                             flex=3
@@ -143,6 +141,28 @@ def handle_text_message(event):
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text="Bot can't use profile API without user ID"))
+    elif text == 'my_tasks':
+        response = get_all_tasks()
+        if(response):
+            carousels = []
+            for task in response:
+                carousels.append(ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
+                                    title=task['taskTitle'],text="委託人:{}".format(task['taskOwnerName']),
+                                    action=MessageAction(label='進行任務', text=task['taskId']))) 
+            image_carousel_template = ImageCarouselTemplate(columns=carousels)
+            # image_carousel_template = ImageCarouselTemplate(columns=[
+            #     ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
+            #                         action=DatetimePickerAction(label='datetime',
+            #                                                     data='datetime_postback',
+            #                                                     mode='datetime')),
+            #     ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
+            #                         action=DatetimePickerAction(label='date',
+            #                                                     data='date_postback',
+            #                                                     mode='date'))
+            # ])
+            template_message = TemplateSendMessage(
+                alt_text='ImageCarousel alt text', template=image_carousel_template)
+            line_bot_api.reply_message(event.reply_token, template_message)
     elif text == 'quota':
         quota = line_bot_api.get_message_quota()
         line_bot_api.reply_message(

@@ -8,3 +8,10 @@ def login(user_id):
         return r.json()
     else:
         return False
+
+def get_all_tasks():
+    r = requests.get(APIUrl+'tasks')
+    if(r.ok):
+        return r.json()
+    else:
+        return False

@@ -10,3 +10,7 @@ response = r.json()
 # %%
 sum(list(response.values()))
 # %%
+r = requests.get(APIUrl+'tasks')
+response = r.json()
+response
+# %%
