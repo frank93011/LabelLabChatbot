@@ -46,9 +46,9 @@ def handle_text_message(event):
                 direction='ltr',
                 hero=ImageComponent(
                     url=profile.picture_url,
-                    size='full',
+                    size='md',
                     aspect_ratio='1:1',
-                    aspect_mode='cover'
+                    aspect_mode='fit'
                 ),
                 body=BoxComponent(
                     layout='vertical',
@@ -82,7 +82,7 @@ def handle_text_message(event):
                                             text='分類任務',
                                             color='#aaaaaa',
                                             size='sm',
-                                            flex=1
+                                            flex=5
                                         ),
                                         TextComponent(
                                             text=str(response['CLAS']),
@@ -101,7 +101,7 @@ def handle_text_message(event):
                                             text='NER任務',
                                             color='#aaaaaa',
                                             size='sm',
-                                            flex=1
+                                            flex=5
                                         ),
                                         TextComponent(
                                             text=str(response['NER']),
