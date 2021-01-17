@@ -45,7 +45,7 @@ def handle_text_message(event):
                 bubble = BubbleContainer(
                 direction='ltr',
                 hero=ImageComponent(
-                    url=profile['pictureUrl'],
+                    url=profile.picture_url,
                     size='full',
                     aspect_ratio='1:1',
                     aspect_mode='cover'
