@@ -45,7 +45,7 @@ def handle_text_message(event):
                 bubble = BubbleContainer(
                 direction='ltr',
                 hero=ImageComponent(
-                    url=profile.pictureUrl,
+                    url=profile['pictureUrl'],
                     size='full',
                     aspect_ratio='1:1',
                     aspect_mode='cover'
@@ -128,7 +128,7 @@ def handle_text_message(event):
                     ]
                 ),
             )
-            message = FlexSendMessage(alt_text="hello", contents=bubble)
+            message = FlexSendMessage(alt_text="我的Labelr檔案", contents=bubble)
             line_bot_api.reply_message(
                 event.reply_token,
                 message
