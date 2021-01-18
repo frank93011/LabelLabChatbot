@@ -631,7 +631,7 @@ def handle_postback(event):
         action = event.postback.data.split("&")[0][7:]
         taskId = event.postback.data.split("&")[1][7:]
         if(action == "startTask"):
-            url, replyItems = startTask(event.profile.user_id, taskId)
+            url, replyItems = startTask(event.source.user_id, taskId)
             line_bot_api.reply_message(
                 event.reply_token,
                 [ImageSendMessage(url, url),
@@ -648,8 +648,8 @@ def handle_postback(event):
             transactionId = None
             if(event.postback.data.find("transactionId") != -1):
                 transactionId = event.postback.data.split("&")[4][14:]
-            transaction = answerTask(event.profile.user_id, taskId ,labelId, answer, transactionId)
-            url, replyItems = startTask(event.profile.user_id, taskId, transaction['transactionId'])
+            transaction = answerTask(event.source.user_id, taskId ,labelId, answer, transactionId)
+            url, replyItems = startTask(event.source.user_id, taskId, transaction['transactionId'])
             line_bot_api.reply_message(
                 event.reply_token,
                 [ImageSendMessage(url, url),

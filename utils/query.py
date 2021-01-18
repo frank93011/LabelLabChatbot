@@ -70,6 +70,6 @@ def answerTask(userId, taskId, labelId, answer, transactionId=None):
     if(transactionId):
         query.update({'transactionId': transactionId})
     r = requests.post(APIUrl+'saveAnswer', json=query)
-    if(response.ok):
+    if(r.ok):
         response = r.json()
         return response
