@@ -632,6 +632,7 @@ def handle_postback(event):
             options = get_all_options(taskId)
             labelObject = get_question(event.source.user_id, taskId)
             url = labelObject['url']
+            print(url)
             app.logger.info("url=" + url)
 
             replyItems = []

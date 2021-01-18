@@ -33,7 +33,7 @@ def get_question(userId, taskId):
     result = {}
     if(r.ok):
         response = r.json()
-        result['url'] = response['labelList'][0]['imagePath']
+        result['url'] = response['labelList'][0]['imagePath'].replace("http", "https")
         result['labelId'] = response['labelList'][0]['labelId']
         result['taskId'] = taskId
         return result
