@@ -21,7 +21,7 @@ import json
 import os
 import sys
 import tempfile
-from utils.query import login, get_all_tasks
+from utils.query import *
 from flask import Flask, request, abort, send_from_directory
 
 
@@ -142,19 +142,9 @@ def handle_text_message(event):
             print(response)
             for task in response:
                 carousels.append(CarouselColumn(thumbnail_image_url='https://via.placeholder.com/1024x1024',
-                                    title=task['taskTitle'],text="委託人:{}".format(task['taskOwnerName']),
-                                    actions=[PostbackAction(label='ping', data='ping')]))
+                                    title=task['taskTitle'],text="委託人: {}".format(task['taskOwnerName']),
+                                    actions=[PostbackAction(label='開始任務', data='action=startTask&taskId={}'.format(task['taskId']))]))
             image_carousel_template = CarouselTemplate(columns=carousels)
-            # image_carousel_template = ImageCarouselTemplate(columns=[
-            #     ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
-            #                         action=DatetimePickerAction(label='datetime',
-            #                                                     data='datetime_postback',
-            #                                                     mode='datetime')),
-            #     ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
-            #                         action=DatetimePickerAction(label='date',
-            #                                                     data='date_postback',
-            #                                                     mode='date'))
-            # ])
             template_message = TemplateSendMessage(
                 alt_text='所有任務', template=image_carousel_template)
             line_bot_api.reply_message(event.reply_token, template_message)
@@ -547,8 +537,8 @@ def handle_sticker_message(event):
     line_bot_api.reply_message(
         event.reply_token,
         StickerSendMessage(
-            package_id=event.message.package_id+1,
-            sticker_id=event.message.sticker_id+1)
+            package_id=event.message.package_id,
+            sticker_id=event.message.sticker_id)
     )
 
 
@@ -635,6 +625,30 @@ def handle_postback(event):
     elif event.postback.data == 'date_postback':
         line_bot_api.reply_message(
             event.reply_token, TextSendMessage(text=event.postback.params['date']))
+    elif event.postback.data.find("&") != -1:
+        action = event.postback.data.split("&")[0][7:]
+        taskId = event.postback.data.split("&")[1][7:]
+        if(action == "startTask"):
+            options = get_all_options(taskId)
+            labelObject = get_question(event.source.user_id, taskId)
+            url = labelObject['url']
+            app.logger.info("url=" + url)
+
+            replyItems = []
+            for option in options:
+                replyItems.append(
+                    QuickReplyButton(
+                            action=PostbackAction(label=option, data="action=answerTask&taskId={}&labelId={}&answer={}".format(taskId, labelObject['labelId'],option))
+                    )
+                )
+            line_bot_api.reply_message(
+                event.reply_token,
+                ImageSendMessage(url, url),
+                quick_reply=QuickReply(
+                    items=replyItems
+                )
+            )
+    
 
 
 @handler.add(BeaconEvent)
