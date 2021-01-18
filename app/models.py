@@ -652,14 +652,25 @@ def handle_postback(event):
             url, replyItems = startTask(event.source.user_id, taskId, transaction['transactionId'])
             line_bot_api.reply_message(
                 event.reply_token,
-                [ImageSendMessage(url, url),
+                [   TextSendMessage(text=answer),
+                    ImageSendMessage(url, url),
                     TextSendMessage(text='請問上方圖片屬於哪個類別?',
                     quick_reply=QuickReply(
                         items=replyItems
                     ))
                 ]
             )
-
+        elif(action == "endTask"):
+            labelId = event.postback.data.split("&")[2][8:]
+            answer = event.postback.data.split("&")[3][7:]
+            transactionId = event.postback.data.split("&")[4][14:]
+            response = endTask(event.source.user_id, taskId,transactionId)
+            line_bot_api.reply_message(
+                event.reply_token,
+                [   TextSendMessage(text=answer),
+                    TextSendMessage(text='準確度評估為:{}'.format(response['accuracy']))
+                ]
+            )
 
 @handler.add(BeaconEvent)
 def handle_beacon(event):

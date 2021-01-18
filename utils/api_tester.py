@@ -40,3 +40,13 @@ r = requests.post(APIUrl+'saveAnswer', json=query)
 response = r.json()
 response
 # %%
+query = {
+    "taskType": "classification",
+    "userId": "U4b95521900347bfce99dda2206a20c74",
+    "taskId": "taskId1f54c47a361b40f9",
+    "transactionId": "transId46bd8da6c7a34893"
+}
+r = requests.post(APIUrl+'accuracy', json=query)
+response = r.json()
+response
+# %%

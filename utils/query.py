@@ -57,6 +57,10 @@ def startTask(userId, taskId, transactionId=None):
                         action=PostbackAction(label=option, data="action=answerTask&taskId={}&labelId={}&answer={}&transactionId={}".format(taskId, labelObject['labelId'], option, transactionId))
                 )
             )
+        replyItems.append(
+            QuickReplyButton(
+                    action=PostbackAction(label="結束作答", data="action=endTask&taskId={}&labelId={}&answer={}&transactionId={}".format(taskId, labelObject['labelId'], "結束作答", transactionId))
+            ))
     return url, replyItems
 
 def answerTask(userId, taskId, labelId, answer, transactionId=None):
@@ -70,6 +74,18 @@ def answerTask(userId, taskId, labelId, answer, transactionId=None):
     if(transactionId):
         query.update({'transactionId': transactionId})
     r = requests.post(APIUrl+'saveAnswer', json=query)
+    if(r.ok):
+        response = r.json()
+        return response
+
+def endTask(userId, taskId, transactionId):
+    query = {
+        "taskType": "classification",
+        "userId": userId,
+        "taskId": taskId,
+        "transactionId": transactionId
+    }
+    r = requests.post(APIUrl+'accuracy', json=query)
     if(r.ok):
         response = r.json()
         return response
