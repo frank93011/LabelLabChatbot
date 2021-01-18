@@ -29,3 +29,14 @@ r = requests.post(APIUrl+'task/getLabel', json=query)
 response = r.json()
 response
 # %%
+query = {
+    "taskType": "classification",
+    "userId": "U4b95521900347bfce99dda2206a20c74",
+    "taskId": "taskId1f54c47a361b40f9",
+    "classification": "airplane",
+    "labelIdList": ['labelId249dbd179b5f4dce']
+}
+r = requests.post(APIUrl+'saveAnswer', json=query)
+response = r.json()
+response
+# %%

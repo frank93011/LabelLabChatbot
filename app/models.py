@@ -83,9 +83,10 @@ def handle_text_message(event):
                                         TextComponent(
                                             text=str(response['CLAS']),
                                             wrap=True,
+                                            align= "center",
                                             color='#666666',
                                             size='sm',
-                                            flex=5
+                                            flex=3
                                         )
                                     ],
                                 ),
@@ -95,6 +96,7 @@ def handle_text_message(event):
                                     contents=[
                                         TextComponent(
                                             text='NER任務',
+                                            align= "center",
                                             color='#aaaaaa',
                                             size='sm',
                                             flex=3
@@ -105,7 +107,7 @@ def handle_text_message(event):
                                             wrap=True,
                                             color='#666666',
                                             size='sm',
-                                            flex=5,
+                                            flex=3,
                                         ),
                                     ],
                                 ),
@@ -629,19 +631,7 @@ def handle_postback(event):
         action = event.postback.data.split("&")[0][7:]
         taskId = event.postback.data.split("&")[1][7:]
         if(action == "startTask"):
-            options = get_all_options(taskId)
-            labelObject = get_question(event.source.user_id, taskId)
-            url = labelObject['url']
-            print(url)
-            app.logger.info("url=" + url)
-
-            replyItems = []
-            for option in options:
-                replyItems.append(
-                    QuickReplyButton(
-                            action=PostbackAction(label=option, data="action=answerTask&taskId={}&labelId={}&answer={}".format(taskId, labelObject['labelId'],option))
-                    )
-                )
+            url, replyItems = startTask(event.profile.user_id, taskId)
             line_bot_api.reply_message(
                 event.reply_token,
                 [ImageSendMessage(url, url),
@@ -651,7 +641,24 @@ def handle_postback(event):
                     ))
                 ]
             )
-    
+        
+        elif(action == "answerTask"):
+            labelId = event.postback.data.split("&")[2][8:]
+            answer = event.postback.data.split("&")[3][7:]
+            transactionId = None
+            if(event.postback.data.find("transactionId") != -1):
+                transactionId = event.postback.data.split("&")[4][14:]
+            transaction = answerTask(event.profile.user_id, taskId ,labelId, answer, transactionId)
+            url, replyItems = startTask(event.profile.user_id, taskId, transaction['transactionId'])
+            line_bot_api.reply_message(
+                event.reply_token,
+                [ImageSendMessage(url, url),
+                    TextSendMessage(text='請問上方圖片屬於哪個類別?',
+                    quick_reply=QuickReply(
+                        items=replyItems
+                    ))
+                ]
+            )
 
 
 @handler.add(BeaconEvent)
