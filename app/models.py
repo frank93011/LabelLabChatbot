@@ -652,7 +652,7 @@ def handle_postback(event):
             url, replyItems = startTask(event.source.user_id, taskId, transaction['transactionId'])
             line_bot_api.reply_message(
                 event.reply_token,
-                [   TextSendMessage(text=answer),
+                [   TextSendMessage(text="你的答案是: {}".format(answer)),
                     ImageSendMessage(url, url),
                     TextSendMessage(text='請問上方圖片屬於哪個類別?',
                     quick_reply=QuickReply(
