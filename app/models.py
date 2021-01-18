@@ -643,10 +643,12 @@ def handle_postback(event):
                 )
             line_bot_api.reply_message(
                 event.reply_token,
-                ImageSendMessage(url, url),
-                quick_reply=QuickReply(
-                    items=replyItems
-                )
+                [ImageSendMessage(url),
+                    TextSendMessage(text='請問上方圖片屬於哪個類別?',
+                    quick_reply=QuickReply(
+                        items=replyItems
+                    ))
+                ]
             )
     
 
