@@ -143,7 +143,7 @@ def handle_text_message(event):
             for task in response:
                 carousels.append(CarouselColumn(thumbnail_image_url='https://via.placeholder.com/1024x1024',
                                     title=task['taskTitle'],text="委託人:{}".format(task['taskOwnerName']),
-                                    action=PostbackAction(label='ping', data='ping'))) 
+                                    actions=[PostbackAction(label='ping', data='ping')]))
             image_carousel_template = CarouselTemplate(columns=carousels)
             # image_carousel_template = ImageCarouselTemplate(columns=[
             #     ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
