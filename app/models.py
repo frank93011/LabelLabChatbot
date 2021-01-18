@@ -36,12 +36,6 @@ def handle_text_message(event):
             if(response):
                 print(profile)
                 totalFinished = sum(list(response.values()))
-                # line_bot_api.reply_message(
-                #     event.reply_token, [
-                #         TextSendMessage(text='Display name: ' + profile.display_name),
-                #         TextSendMessage(text='UserId: ' + str(event.source.user_id))
-                #     ]
-                # )
                 bubble = BubbleContainer(
                 direction='ltr',
                 hero=ImageComponent(
@@ -145,10 +139,11 @@ def handle_text_message(event):
         response = get_all_tasks()
         if(response):
             carousels = []
+            print(response)
             for task in response:
                 carousels.append(CarouselColumn(thumbnail_image_url='https://via.placeholder.com/1024x1024',
                                     title=task['taskTitle'],text="委託人:{}".format(task['taskOwnerName']),
-                                    action=MessageAction(label='進行任務', text=task['taskId']))) 
+                                    action=PostbackAction(label='ping', data='ping'))) 
             image_carousel_template = CarouselTemplate(columns=carousels)
             # image_carousel_template = ImageCarouselTemplate(columns=[
             #     ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
@@ -161,7 +156,7 @@ def handle_text_message(event):
             #                                                     mode='date'))
             # ])
             template_message = TemplateSendMessage(
-                alt_text='ImageCarousel alt text', template=image_carousel_template)
+                alt_text='所有任務', template=image_carousel_template)
             line_bot_api.reply_message(event.reply_token, template_message)
     elif text == 'quota':
         quota = line_bot_api.get_message_quota()
