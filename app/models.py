@@ -181,13 +181,15 @@ def handle_text_message(event):
                         contents=[
                             BoxComponent(
                                 layout='vertical',
-                                contents=[IconComponent(size='sm', url='https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Microsoft_logo_-_2012_%28vertical%29.svg/663px-Microsoft_logo_-_2012_%28vertical%29.svg.png')]
+                                contents=[ImageComponent(size='sm', url='https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Microsoft_logo_-_2012_%28vertical%29.svg/663px-Microsoft_logo_-_2012_%28vertical%29.svg.png')],
+                                width="72px",
+                                height="72px"
                             ),
                             BoxComponent(
                                 layout='vertical',
                                 contents=[
                                     TextComponent(text='Microsoft Consulting Services', size='md', weight='bold', color='#999999'),
-                                    TextComponent(text='Software Develop Intern', size='md', color='#999999')
+                                    TextComponent(text='Software Develop Intern, 2020.6 - now', size='md', color='#999999')
                                 ]
                             )
                         ]
