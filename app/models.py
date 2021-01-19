@@ -179,14 +179,7 @@ def handle_text_message(event):
                         layout='baseline',
                         margin='md',
                         contents=[
-                            IconComponent(size='xl', url='https://upload-icon.s3.amazonaws.com/uploads/icons/png/1988255921553750372-512.png'),
-                            BoxComponent(
-                                layout='vertical',
-                                contents=[
-                                    TextComponent(text='Microsoft Consulting Services', size='sm', weight='bold', color='#999999'),
-                                    TextComponent(text='Software Develop Intern', size='sm', color='#999999')
-                                ]
-                            )
+                            IconComponent(size='xl', url='https://upload-icon.s3.amazonaws.com/uploads/icons/png/1988255921553750372-512.png')
                         ]
                     )
                 ]
