@@ -179,12 +179,12 @@ def handle_text_message(event):
                         layout='horizontal',
                         margin='md',
                         contents=[
-                            ImageComponent(size='xl', url='https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Microsoft_logo_-_2012_%28vertical%29.svg/663px-Microsoft_logo_-_2012_%28vertical%29.svg.png'),
+                            ImageComponent(size='md', url='https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Microsoft_logo_-_2012_%28vertical%29.svg/663px-Microsoft_logo_-_2012_%28vertical%29.svg.png'),
                             BoxComponent(
                                 layout='vertical',
                                 contents=[
-                                    TextComponent(text='Microsoft Consulting Services', size='sm', weight='bold', color='#999999'),
-                                    TextComponent(text='Software Develop Intern', size='sm', color='#999999')
+                                    TextComponent(text='Microsoft Consulting Services', size='md', weight='bold', color='#999999'),
+                                    TextComponent(text='Software Develop Intern', size='md', color='#999999')
                                 ]
                             )
                         ]
