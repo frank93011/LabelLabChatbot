@@ -29,7 +29,7 @@ from flask import Flask, request, abort, send_from_directory
 def handle_text_message(event):
     text = event.message.text
 
-    if text == 'profile':
+    if text == '我的labelr檔案':
         if isinstance(event.source, SourceUser):
             profile = line_bot_api.get_profile(event.source.user_id)
             response = login(event.source.user_id)
@@ -137,14 +137,14 @@ def handle_text_message(event):
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text="Bot can't use profile API without user ID"))
-    elif text == 'my_tasks':
+    elif text == '任務清單':
         response = get_all_tasks()
         if(response):
             carousels = []
             print(response)
             for task in response:
                 if(task['taskType'] == 'classification'):
-                    carousels.append(CarouselColumn(thumbnail_image_url='https://i.imgur.com/B2TMZAg.jpeg',
+                    carousels.append(CarouselColumn(thumbnail_image_url='https://i.imgur.com/vphbdKm.jpg',
                                         title=task['taskTitle'],text="委託人: {}".format(task['taskOwnerName']),
                                         actions=[PostbackAction(label='開始任務', data='action=startTask&taskId={}'.format(task['taskId']))]))
             image_carousel_template = CarouselTemplate(columns=carousels)
