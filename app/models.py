@@ -195,44 +195,44 @@ def handle_text_message(event):
                             )
                         ]
                     ),
-                    # BoxComponent(
-                    #     layout='horizontal',
-                    #     margin='lg',
-                    #     contents=[
-                    #         BoxComponent(
-                    #             layout='vertical',
-                    #             contents=[ImageComponent(size='sm', url='https://i.imgur.com/VGqXUXl.png')],
-                    #             width="35px",
-                    #             height="35px"
-                    #         ),
-                    #         BoxComponent(
-                    #             layout='vertical',
-                    #             contents=[
-                    #                 TextComponent(text='Logiscool', size='md', weight='bold', color='#999999'),
-                    #                 TextComponent(text='Technical Assistant', size='md', color='#999999')
-                    #             ]
-                    #         )
-                    #     ]
-                    # ),
-                    # BoxComponent(
-                    #     layout='horizontal',
-                    #     margin='lg',
-                    #     contents=[
-                    #         BoxComponent(
-                    #             layout='vertical',
-                    #             contents=[ImageComponent(size='sm', url='https://i.imgur.com/pNonon4.png')],
-                    #             width="40px",
-                    #             height="40px"
-                    #         ),
-                    #         BoxComponent(
-                    #             layout='vertical',
-                    #             contents=[
-                    #                 TextComponent(text='PT.ICE Messenger', size='md', weight='bold', color='#999999'),
-                    #                 TextComponent(text='Android Intern', size='md', color='#999999')
-                    #             ]
-                    #         )
-                    #     ]
-                    # )
+                    BoxComponent(
+                        layout='horizontal',
+                        margin='xl',
+                        contents=[
+                            BoxComponent(
+                                layout='vertical',
+                                contents=[ImageComponent(size='sm', url='https://i.imgur.com/VGqXUXl.png')],
+                                width="40px",
+                                height="40px"
+                            ),
+                            BoxComponent(
+                                layout='vertical',
+                                contents=[
+                                    TextComponent(text='Logiscool', size='md', weight='bold', color='#999999'),
+                                    TextComponent(text='Technical Assistant', size='md', color='#999999')
+                                ]
+                            )
+                        ]
+                    ),
+                    BoxComponent(
+                        layout='horizontal',
+                        margin='xl',
+                        contents=[
+                            BoxComponent(
+                                layout='vertical',
+                                contents=[ImageComponent(size='sm', url='https://i.imgur.com/pNonon4.png')],
+                                width="40px",
+                                height="40px"
+                            ),
+                            BoxComponent(
+                                layout='vertical',
+                                contents=[
+                                    TextComponent(text='PT.ICE Messenger', size='md', weight='bold', color='#999999'),
+                                    TextComponent(text='Android Intern', size='md', color='#999999')
+                                ]
+                            )
+                        ]
+                    )
                 ]
             ),
             footer=BoxComponent(
