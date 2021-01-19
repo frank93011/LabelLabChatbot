@@ -156,12 +156,6 @@ def handle_text_message(event):
         app.logger.info("url=" + url)
         bubble = BubbleContainer(
             direction='ltr',
-            header=TextComponent(
-                text='陳漢威 Frank',
-                size='xl',
-                weight='bold',
-                flex=1
-            ),
             hero=ImageComponent(
                 url=url,
                 size='full',
