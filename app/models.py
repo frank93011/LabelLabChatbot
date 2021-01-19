@@ -189,8 +189,8 @@ def handle_text_message(event):
                             BoxComponent(
                                 layout='vertical',
                                 contents=[
-                                    TextComponent(text='Microsoft Consulting Services', size='md', weight='bold', color='#999999'),
-                                    TextComponent(text='Software Develop Intern', size='md', color='#999999')
+                                    TextComponent(text='Microsoft Consulting Services', size='md', offsetStart='10px', weight='bold', color='#999999'),
+                                    TextComponent(text='Software Develop Intern', size='md', offsetStart='10px', color='#999999')
                                 ]
                             )
                         ]
@@ -208,14 +208,15 @@ def handle_text_message(event):
                             BoxComponent(
                                 layout='vertical',
                                 contents=[
-                                    TextComponent(text='Logiscool', size='md', weight='bold', color='#999999'),
-                                    TextComponent(text='Technical Assistant', size='md', color='#999999')
+                                    TextComponent(text='Logiscool', size='md', offsetStart='10px', weight='bold', color='#999999'),
+                                    TextComponent(text='Technical Assistant', size='md', offsetStart='10px', color='#999999')
                                 ]
                             )
                         ]
                     ),
                     BoxComponent(
                         layout='horizontal',
+                        margin='xl',
                         contents=[
                             BoxComponent(
                                 layout='vertical',
@@ -225,7 +226,6 @@ def handle_text_message(event):
                             ),
                             BoxComponent(
                                 layout='vertical',
-                                margin='xl',
                                 contents=[
                                     TextComponent(text='PT.ICE Messenger', size='md', weight='bold', offsetStart='10px', color='#999999'),
                                     TextComponent(text='Android Intern', size='md', offsetStart='10px', color='#999999')
