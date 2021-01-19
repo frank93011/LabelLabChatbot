@@ -157,12 +157,6 @@ def handle_text_message(event):
         app.logger.info("url=" + url)
         bubble = BubbleContainer(
             direction='ltr',
-            header=TextComponent(
-                text='陳漢威 Frank',
-                size='xl',
-                weight='bold',
-                flex=1
-            ),
             hero=ImageComponent(
                 url=url,
                 size='full',
@@ -173,13 +167,26 @@ def handle_text_message(event):
                 layout='vertical',
                 contents=[
                     # title
+                    TextComponent(
+                        text='陳漢威 Frank',
+                        size='xl',
+                        weight='bold',
+                        flex=1
+                    ),
                     TextComponent(text='工作經驗', weight='bold', color='#aaaaaa', size='xl'),
                     # review
                     BoxComponent(
                         layout='baseline',
                         margin='md',
                         contents=[
-                            IconComponent(size='xl', url='https://upload-icon.s3.amazonaws.com/uploads/icons/png/1988255921553750372-512.png')
+                            IconComponent(size='xxl', url='https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Microsoft_logo_-_2012_%28vertical%29.svg/663px-Microsoft_logo_-_2012_%28vertical%29.svg.png'),
+                            BoxComponent(
+                                layout='vertical',
+                                contents=[
+                                    TextComponent(text='Microsoft Consulting Services', size='sm', weight='bold', color='#999999'),
+                                    TextComponent(text='Software Develop Intern', size='sm', color='#999999')
+                                ]
+                            )
                         ]
                     )
                 ]
