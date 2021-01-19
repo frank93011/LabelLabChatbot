@@ -183,8 +183,8 @@ def handle_text_message(event):
                             BoxComponent(
                                 layout='vertical',
                                 contents=[ImageComponent(size='sm', url='https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Microsoft_logo_-_2012_%28vertical%29.svg/663px-Microsoft_logo_-_2012_%28vertical%29.svg.png')],
-                                width="30px",
-                                height="30px"
+                                width="35px",
+                                height="35px"
                             ),
                             BoxComponent(
                                 layout='vertical',
@@ -202,8 +202,8 @@ def handle_text_message(event):
                             BoxComponent(
                                 layout='vertical',
                                 contents=[ImageComponent(size='sm', url='https://i.imgur.com/VGqXUXl.png')],
-                                width="30px",
-                                height="30px"
+                                width="35px",
+                                height="35px"
                             ),
                             BoxComponent(
                                 layout='vertical',
@@ -221,8 +221,8 @@ def handle_text_message(event):
                             BoxComponent(
                                 layout='vertical',
                                 contents=[ImageComponent(size='sm', url='https://i.imgur.com/pNonon4.png')],
-                                width="30px",
-                                height="30px"
+                                width="35px",
+                                height="35px"
                             ),
                             BoxComponent(
                                 layout='vertical',
