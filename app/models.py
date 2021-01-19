@@ -173,54 +173,22 @@ def handle_text_message(event):
                 contents=[
                     # title
                     TextComponent(text='工作經驗', weight='bold', color='#aaaaaa', size='xl'),
-
-                    # info
+                    # review
                     BoxComponent(
-                        layout='vertical',
-                        margin='lg',
-                        spacing='sm',
+                        layout='baseline',
+                        margin='md',
                         contents=[
+                            IconComponent(size='xl', url='https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31'),
                             BoxComponent(
-                                layout='baseline',
-                                spacing='sm',
+                                layout='vertical',
+                                margin='md',
                                 contents=[
-                                    TextComponent(
-                                        text='Place',
-                                        color='#aaaaaa',
-                                        size='sm',
-                                        flex=1
-                                    ),
-                                    TextComponent(
-                                        text='Shinjuku, Tokyo',
-                                        wrap=True,
-                                        color='#666666',
-                                        size='sm',
-                                        flex=5
-                                    )
-                                ],
-                            ),
-                            BoxComponent(
-                                layout='baseline',
-                                spacing='sm',
-                                contents=[
-                                    TextComponent(
-                                        text='Time',
-                                        color='#aaaaaa',
-                                        size='sm',
-                                        flex=1
-                                    ),
-                                    TextComponent(
-                                        text="10:00 - 23:00",
-                                        wrap=True,
-                                        color='#666666',
-                                        size='sm',
-                                        flex=5,
-                                    ),
-                                ],
-                            ),
-                        ],
+                                    TextComponent(text='Microsoft Consulting Services', size='sm', weight='bold', color='#999999', margin='md'),
+                                    TextComponent(text='Software Develop Intern', size='sm', color='#999999', margin='md')
+                                ])
+                        ]
                     )
-                ],
+                ]
             ),
             footer=BoxComponent(
                 layout='vertical',
