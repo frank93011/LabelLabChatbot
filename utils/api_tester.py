@@ -50,3 +50,7 @@ r = requests.post(APIUrl+'accuracy', json=query)
 response = r.json()
 response
 # %%
+query = {"taskId": 'taskId1f54c47a361b40f9'}
+r = requests.post(APIUrl+'task', json=query)
+response = r.json()
+# %%

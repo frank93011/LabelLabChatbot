@@ -188,6 +188,7 @@ def handle_text_message(event):
                             ),
                             BoxComponent(
                                 layout='vertical',
+                                margin='xl',
                                 contents=[
                                     TextComponent(text='Microsoft Consulting Services', size='md', offsetStart='10px', weight='bold', color='#999999'),
                                     TextComponent(text='Software Develop Intern', size='md', offsetStart='10px', color='#999999')
@@ -207,6 +208,7 @@ def handle_text_message(event):
                             ),
                             BoxComponent(
                                 layout='vertical',
+                                margin='xl',
                                 contents=[
                                     TextComponent(text='Logiscool', size='md', offsetStart='10px', weight='bold', color='#999999'),
                                     TextComponent(text='Technical Assistant', size='md', offsetStart='10px', color='#999999')
