@@ -173,21 +173,7 @@ def handle_text_message(event):
                 contents=[
                     # title
                     TextComponent(text='工作經驗', weight='bold', color='#aaaaaa', size='xl'),
-                    # review
-                    BoxComponent(
-                        layout='baseline',
-                        margin='md',
-                        contents=[
-                            IconComponent(size='xl', url='https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31'),
-                            BoxComponent(
-                                layout='vertical',
-                                margin='md',
-                                contents=[
-                                    TextComponent(text='Microsoft Consulting Services', size='lg', weight='bold', color='#999999', margin='md',flex=0),
-                                    TextComponent(text='Software Develop Intern', size='sm', color='#999999', margin='md',flex=0)
-                                ])
-                        ]
-                    ),
+
                     # info
                     BoxComponent(
                         layout='vertical',
@@ -235,6 +221,26 @@ def handle_text_message(event):
                         ],
                     )
                 ],
+            ),
+            footer=BoxComponent(
+                layout='vertical',
+                spacing='sm',
+                contents=[
+                    # callAction
+                    ButtonComponent(
+                        style='link',
+                        height='sm',
+                        action=PostbackAction(label='更多專案經歷', data='action=projectExperience&taskId=0')
+                    ),
+                    # separator
+                    SeparatorComponent(),
+                    # websiteAction
+                    ButtonComponent(
+                        style='link',
+                        height='sm',
+                        action=PostbackAction(label='聯絡方式', data='action=contact&taskId=0')
+                    )
+                ]
             ),
         )
         message = FlexSendMessage(alt_text="關於作者", contents=bubble)
