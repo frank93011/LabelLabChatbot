@@ -216,7 +216,6 @@ def handle_text_message(event):
                     ),
                     BoxComponent(
                         layout='horizontal',
-                        margin='xl',
                         contents=[
                             BoxComponent(
                                 layout='vertical',
@@ -228,8 +227,8 @@ def handle_text_message(event):
                                 layout='vertical',
                                 margin='xl',
                                 contents=[
-                                    TextComponent(text='PT.ICE Messenger', size='md', weight='bold', color='#999999'),
-                                    TextComponent(text='Android Intern', size='md', color='#999999')
+                                    TextComponent(text='PT.ICE Messenger', size='md', weight='bold', margin='xl', color='#999999'),
+                                    TextComponent(text='Android Intern', size='md', margin='xl', color='#999999')
                                 ]
                             )
                         ]
