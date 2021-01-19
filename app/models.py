@@ -165,6 +165,7 @@ def handle_text_message(event):
             ),
             body=BoxComponent(
                 layout='vertical',
+                margin='md',
                 contents=[
                     # title
                     TextComponent(
@@ -174,22 +175,60 @@ def handle_text_message(event):
                         flex=1
                     ),
                     TextComponent(text='工作經驗', weight='bold', color='#aaaaaa', size='lg'),
-                    # review
+                    # work experience
                     BoxComponent(
                         layout='horizontal',
-                        margin='sm',
+                        margin='md',
                         contents=[
                             BoxComponent(
                                 layout='vertical',
                                 contents=[ImageComponent(size='sm', url='https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Microsoft_logo_-_2012_%28vertical%29.svg/663px-Microsoft_logo_-_2012_%28vertical%29.svg.png')],
-                                width="40px",
-                                height="40px"
+                                width="30px",
+                                height="30px"
                             ),
                             BoxComponent(
                                 layout='vertical',
                                 contents=[
                                     TextComponent(text='Microsoft Consulting Services', size='md', weight='bold', color='#999999'),
                                     TextComponent(text='Software Develop Intern', size='md', color='#999999')
+                                ]
+                            )
+                        ]
+                    ),
+                    BoxComponent(
+                        layout='horizontal',
+                        margin='md',
+                        contents=[
+                            BoxComponent(
+                                layout='vertical',
+                                contents=[ImageComponent(size='sm', url='https://i.imgur.com/VGqXUXl.png')],
+                                width="30px",
+                                height="30px"
+                            ),
+                            BoxComponent(
+                                layout='vertical',
+                                contents=[
+                                    TextComponent(text='Logiscool', size='md', weight='bold', color='#999999'),
+                                    TextComponent(text='Technical Assistant', size='md', color='#999999')
+                                ]
+                            )
+                        ]
+                    ),
+                    BoxComponent(
+                        layout='horizontal',
+                        margin='md',
+                        contents=[
+                            BoxComponent(
+                                layout='vertical',
+                                contents=[ImageComponent(size='sm', url='https://i.imgur.com/pNonon4.png')],
+                                width="30px",
+                                height="30px"
+                            ),
+                            BoxComponent(
+                                layout='vertical',
+                                contents=[
+                                    TextComponent(text='PT.ICE Messenger', size='md', weight='bold', color='#999999'),
+                                    TextComponent(text='Android Intern', size='md', color='#999999')
                                 ]
                             )
                         ]
