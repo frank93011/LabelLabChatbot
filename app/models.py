@@ -227,8 +227,8 @@ def handle_text_message(event):
                                 layout='vertical',
                                 margin='xl',
                                 contents=[
-                                    TextComponent(text='PT.ICE Messenger', size='md', weight='bold', margin='xl', color='#999999'),
-                                    TextComponent(text='Android Intern', size='md', margin='xl', color='#999999')
+                                    TextComponent(text='PT.ICE Messenger', size='md', weight='bold', offsetStart='10px', color='#999999'),
+                                    TextComponent(text='Android Intern', size='md', offsetStart='10px', color='#999999')
                                 ]
                             )
                         ]
