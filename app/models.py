@@ -177,13 +177,12 @@ def handle_text_message(event):
                     # review
                     BoxComponent(
                         layout='horizontal',
-                        margin='md',
                         contents=[
                             BoxComponent(
                                 layout='vertical',
                                 contents=[ImageComponent(size='sm', url='https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Microsoft_logo_-_2012_%28vertical%29.svg/663px-Microsoft_logo_-_2012_%28vertical%29.svg.png')],
-                                width="72px",
-                                height="72px"
+                                width="40px",
+                                height="40px"
                             ),
                             BoxComponent(
                                 layout='vertical',
