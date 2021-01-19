@@ -173,7 +173,7 @@ def handle_text_message(event):
                         weight='bold',
                         flex=1
                     ),
-                    TextComponent(text='工作經驗', weight='bold', color='#aaaaaa', size='xl'),
+                    TextComponent(text='工作經驗', weight='bold', color='#aaaaaa', size='lg'),
                     # review
                     BoxComponent(
                         layout='horizontal',
@@ -181,7 +181,7 @@ def handle_text_message(event):
                         contents=[
                             BoxComponent(
                                 layout='vertical',
-                                contents=[ImageComponent(size='md', url='https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Microsoft_logo_-_2012_%28vertical%29.svg/663px-Microsoft_logo_-_2012_%28vertical%29.svg.png')]
+                                contents=[IconComponent(size='sm', url='https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Microsoft_logo_-_2012_%28vertical%29.svg/663px-Microsoft_logo_-_2012_%28vertical%29.svg.png')]
                             ),
                             BoxComponent(
                                 layout='vertical',
