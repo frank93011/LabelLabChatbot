@@ -176,7 +176,7 @@ def handle_text_message(event):
                     TextComponent(text='工作經驗', weight='bold', color='#aaaaaa', size='xl'),
                     # review
                     BoxComponent(
-                        layout='baseline',
+                        layout='horizontal',
                         margin='md',
                         contents=[
                             ImageComponent(size='xl', url='https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Microsoft_logo_-_2012_%28vertical%29.svg/663px-Microsoft_logo_-_2012_%28vertical%29.svg.png'),
