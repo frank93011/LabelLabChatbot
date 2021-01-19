@@ -156,6 +156,12 @@ def handle_text_message(event):
         app.logger.info("url=" + url)
         bubble = BubbleContainer(
             direction='ltr',
+            header=TextComponent(
+                text='陳漢威 Frank',
+                size='xl',
+                weight='bold',
+                flex=1
+            ),
             hero=ImageComponent(
                 url=url,
                 size='full',
@@ -230,28 +236,8 @@ def handle_text_message(event):
                     )
                 ],
             ),
-            footer=BoxComponent(
-                layout='vertical',
-                spacing='sm',
-                contents=[
-                    # callAction
-                    ButtonComponent(
-                        style='link',
-                        height='sm',
-                        action=PostbackAction(label='更多專案經歷', data='action=projectExperience&taskId=0')
-                    ),
-                    # separator
-                    SeparatorComponent(),
-                    # websiteAction
-                    ButtonComponent(
-                        style='link',
-                        height='sm',
-                        action=PostbackAction(label='聯絡方式', data='action=contact&taskId=0')
-                    )
-                ]
-            ),
         )
-        message = FlexSendMessage(alt_text="hello", contents=bubble)
+        message = FlexSendMessage(alt_text="關於作者", contents=bubble)
         line_bot_api.reply_message(
             event.reply_token,
             message
