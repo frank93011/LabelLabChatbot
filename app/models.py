@@ -160,7 +160,7 @@ def handle_text_message(event):
             hero=ImageComponent(
                 url=url,
                 size='full',
-                aspect_ratio='20:13',
+                aspect_ratio='20:15',
                 aspect_mode='cover',
             ),
             body=BoxComponent(
@@ -178,7 +178,6 @@ def handle_text_message(event):
                     # work experience
                     BoxComponent(
                         layout='horizontal',
-                        margin='lg',
                         contents=[
                             BoxComponent(
                                 layout='vertical',
@@ -221,8 +220,8 @@ def handle_text_message(event):
                             BoxComponent(
                                 layout='vertical',
                                 contents=[ImageComponent(size='sm', url='https://i.imgur.com/pNonon4.png')],
-                                width="35px",
-                                height="35px"
+                                width="32px",
+                                height="32px"
                             ),
                             BoxComponent(
                                 layout='vertical',
