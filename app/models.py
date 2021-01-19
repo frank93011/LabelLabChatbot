@@ -178,7 +178,7 @@ def handle_text_message(event):
                     # work experience
                     BoxComponent(
                         layout='horizontal',
-                        margin='md',
+                        margin='lg',
                         contents=[
                             BoxComponent(
                                 layout='vertical',
@@ -197,7 +197,7 @@ def handle_text_message(event):
                     ),
                     BoxComponent(
                         layout='horizontal',
-                        margin='md',
+                        margin='lg',
                         contents=[
                             BoxComponent(
                                 layout='vertical',
@@ -216,7 +216,7 @@ def handle_text_message(event):
                     ),
                     BoxComponent(
                         layout='horizontal',
-                        margin='md',
+                        margin='lg',
                         contents=[
                             BoxComponent(
                                 layout='vertical',
