@@ -179,7 +179,7 @@ def handle_text_message(event):
                         layout='horizontal',
                         margin='md',
                         contents=[
-                            ImageComponent(size='md', url='https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Microsoft_logo_-_2012_%28vertical%29.svg/663px-Microsoft_logo_-_2012_%28vertical%29.svg.png'),
+                            IconComponent(size='md', url='https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Microsoft_logo_-_2012_%28vertical%29.svg/663px-Microsoft_logo_-_2012_%28vertical%29.svg.png'),
                             BoxComponent(
                                 layout='vertical',
                                 contents=[
