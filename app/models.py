@@ -151,6 +151,117 @@ def handle_text_message(event):
             template_message = TemplateSendMessage(
                 alt_text='所有任務', template=image_carousel_template)
             line_bot_api.reply_message(event.reply_token, template_message)
+    elif text == '關於作者':
+        url = request.url_root + '/static/profile.jpg'
+        app.logger.info("url=" + url)
+        bubble = BubbleContainer(
+            direction='ltr',
+            header=TextComponent(
+                text='陳漢威 Frank',
+                size='xl',
+                weight='bold',
+                flex=1
+            ),
+            hero=ImageComponent(
+                url=url,
+                size='full',
+                aspect_ratio='20:13',
+                aspect_mode='cover',
+            ),
+            body=BoxComponent(
+                layout='vertical',
+                contents=[
+                    # title
+                    TextComponent(text='工作經驗', weight='bold', color='#aaaaaa', size='xl'),
+                    # review
+                    BoxComponent(
+                        layout='baseline',
+                        margin='md',
+                        contents=[
+                            IconComponent(size='xl', url='https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31'),
+                            BoxComponent(
+                                layout='vertical',
+                                margin='md',
+                                contents=[
+                                    TextComponent(text='Microsoft Consulting Services', size='lg', weight='bold', color='#999999', margin='md',flex=0),
+                                    TextComponent(text='Software Develop Intern', size='sm', color='#999999', margin='md',flex=0)
+                                ])
+                        ]
+                    ),
+                    # info
+                    BoxComponent(
+                        layout='vertical',
+                        margin='lg',
+                        spacing='sm',
+                        contents=[
+                            BoxComponent(
+                                layout='baseline',
+                                spacing='sm',
+                                contents=[
+                                    TextComponent(
+                                        text='Place',
+                                        color='#aaaaaa',
+                                        size='sm',
+                                        flex=1
+                                    ),
+                                    TextComponent(
+                                        text='Shinjuku, Tokyo',
+                                        wrap=True,
+                                        color='#666666',
+                                        size='sm',
+                                        flex=5
+                                    )
+                                ],
+                            ),
+                            BoxComponent(
+                                layout='baseline',
+                                spacing='sm',
+                                contents=[
+                                    TextComponent(
+                                        text='Time',
+                                        color='#aaaaaa',
+                                        size='sm',
+                                        flex=1
+                                    ),
+                                    TextComponent(
+                                        text="10:00 - 23:00",
+                                        wrap=True,
+                                        color='#666666',
+                                        size='sm',
+                                        flex=5,
+                                    ),
+                                ],
+                            ),
+                        ],
+                    )
+                ],
+            ),
+            footer=BoxComponent(
+                layout='vertical',
+                spacing='sm',
+                contents=[
+                    # callAction
+                    ButtonComponent(
+                        style='link',
+                        height='sm',
+                        action=PostbackAction(label='更多專案經歷', data='action=projectExperience&taskId=0')
+                    ),
+                    # separator
+                    SeparatorComponent(),
+                    # websiteAction
+                    ButtonComponent(
+                        style='link',
+                        height='sm',
+                        action=PostbackAction(label='聯絡方式', data='action=contact&taskId=0')
+                    )
+                ]
+            ),
+        )
+        message = FlexSendMessage(alt_text="hello", contents=bubble)
+        line_bot_api.reply_message(
+            event.reply_token,
+            message
+        )
     elif text == 'quota':
         quota = line_bot_api.get_message_quota()
         line_bot_api.reply_message(
