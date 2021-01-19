@@ -152,7 +152,8 @@ def handle_text_message(event):
                 alt_text='所有任務', template=image_carousel_template)
             line_bot_api.reply_message(event.reply_token, template_message)
     elif text == '關於作者':
-        url = request.url_root + '/static/profile.jpg'
+        # url = request.url_root + '/static/profile.jpg'
+        url = 'https://i.imgur.com/vi9vaYc.jpg'
         app.logger.info("url=" + url)
         bubble = BubbleContainer(
             direction='ltr',
@@ -178,14 +179,14 @@ def handle_text_message(event):
                         layout='baseline',
                         margin='md',
                         contents=[
-                            IconComponent(size='xl', url='https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31'),
+                            IconComponent(size='xl', url='https://upload-icon.s3.amazonaws.com/uploads/icons/png/1988255921553750372-512.png'),
                             BoxComponent(
                                 layout='vertical',
-                                margin='md',
                                 contents=[
-                                    TextComponent(text='Microsoft Consulting Services', size='sm', weight='bold', color='#999999', margin='md'),
-                                    TextComponent(text='Software Develop Intern', size='sm', color='#999999', margin='md')
-                                ])
+                                    TextComponent(text='Microsoft Consulting Services', size='sm', weight='bold', color='#999999'),
+                                    TextComponent(text='Software Develop Intern', size='sm', color='#999999')
+                                ]
+                            )
                         ]
                     )
                 ]
