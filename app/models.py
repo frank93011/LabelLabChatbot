@@ -177,6 +177,7 @@ def handle_text_message(event):
                     # review
                     BoxComponent(
                         layout='horizontal',
+                        margin='sm',
                         contents=[
                             BoxComponent(
                                 layout='vertical',
@@ -188,7 +189,7 @@ def handle_text_message(event):
                                 layout='vertical',
                                 contents=[
                                     TextComponent(text='Microsoft Consulting Services', size='md', weight='bold', color='#999999'),
-                                    TextComponent(text='Software Develop Intern, 2020.6 - now', size='md', color='#999999')
+                                    TextComponent(text='Software Develop Intern', size='md', color='#999999')
                                 ]
                             )
                         ]
