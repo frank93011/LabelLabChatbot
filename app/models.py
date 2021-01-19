@@ -143,9 +143,10 @@ def handle_text_message(event):
             carousels = []
             print(response)
             for task in response:
-                carousels.append(CarouselColumn(thumbnail_image_url='https://via.placeholder.com/1024x1024',
-                                    title=task['taskTitle'],text="委託人: {}".format(task['taskOwnerName']),
-                                    actions=[PostbackAction(label='開始任務', data='action=startTask&taskId={}'.format(task['taskId']))]))
+                if(task['taskType'] == 'classification'):
+                    carousels.append(CarouselColumn(thumbnail_image_url='https://imgur.com/a/LPZfmZa',
+                                        title=task['taskTitle'],text="委託人: {}".format(task['taskOwnerName']),
+                                        actions=[PostbackAction(label='開始任務', data='action=startTask&taskId={}'.format(task['taskId']))]))
             image_carousel_template = CarouselTemplate(columns=carousels)
             template_message = TemplateSendMessage(
                 alt_text='所有任務', template=image_carousel_template)
