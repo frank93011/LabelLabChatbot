@@ -517,7 +517,7 @@ def toAccuracyJson(taskTitle, accuracy):
     }
     """
     ### replace static var to dynamic obj
-    bubbleString = bubbleString.replace("{}", str(accuracy * 100)[:3]).replace("Title", taskTitle)
+    bubbleString = bubbleString.replace("{}", str(int(accuracy * 100))).replace("Title", taskTitle)
     bubbleJson = json.loads(bubbleString)
     return bubbleJson
 
