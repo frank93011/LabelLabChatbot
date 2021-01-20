@@ -142,7 +142,6 @@ def handle_text_message(event):
         response = get_all_tasks()
         if(response):
             carousels = []
-            print(response)
             for task in response:
                 if(task['taskType'] == 'classification'):
                     carousels.append(CarouselColumn(thumbnail_image_url='https://i.imgur.com/vphbdKm.jpg',
@@ -155,7 +154,6 @@ def handle_text_message(event):
         else:
             send_error_message()
     elif text == '關於作者':
-        # url = request.url_root + '/static/profile.jpg'
         url = 'https://i.imgur.com/vi9vaYc.jpg'
         app.logger.info("url=" + url)
         bubble_string = flexObj.profile
@@ -265,104 +263,16 @@ def handle_follow(event):
         response = login(event.source.user_id)
         if(response):
             print(profile)
-            totalFinished = sum(list(response.values()))
-            bubble = BubbleContainer(
-            direction='ltr',
-            hero=ImageComponent(
-                url=profile.picture_url,
-                size='full',
-                aspect_ratio='1:1',
-                aspect_mode='cover'
-            ),
-            body=BoxComponent(
-                layout='vertical',
-                contents=[
-                    # title
-                    TextComponent(text=profile.display_name, weight='bold', size='xl', align= "center"),
-                    # info
-                    BoxComponent(
-                        layout='vertical',
-                        margin='lg',
-                        spacing='sm',
-                        contents=[
-                            BoxComponent(
-                                layout='baseline',
-                                spacing='sm',
-                                contents=[
-                                    TextComponent(
-                                        text='總共完成{}項任務'.format(totalFinished),
-                                        align= "center",
-                                        color='#aaaaaa',
-                                        weight='bold',
-                                        size='md',
-                                        flex=1
-                                    ),
-                                ],
-                            ),
-                            BoxComponent(
-                                layout='baseline',
-                                spacing='sm',
-                                contents=[
-                                    TextComponent(
-                                        text='分類任務',
-                                        align= "center",
-                                        color='#aaaaaa',
-                                        size='sm',
-                                        flex=3
-                                    ),
-                                    TextComponent(
-                                        text=str(response['CLAS']),
-                                        wrap=True,
-                                        align= "center",
-                                        color='#666666',
-                                        size='sm',
-                                        flex=3
-                                    )
-                                ],
-                            ),
-                            BoxComponent(
-                                layout='baseline',
-                                spacing='sm',
-                                contents=[
-                                    TextComponent(
-                                        text='NER任務',
-                                        align= "center",
-                                        color='#aaaaaa',
-                                        size='sm',
-                                        flex=3
-                                    ),
-                                    TextComponent(
-                                        text=str(response['NER']),
-                                        align= "center",
-                                        wrap=True,
-                                        color='#666666',
-                                        size='sm',
-                                        flex=3,
-                                    ),
-                                ],
-                            ),
-                        ],
-                    )
-                ],
-            ),
-            footer=BoxComponent(
-                layout='vertical',
-                spacing='sm',
-                contents=[
-                    ButtonComponent(
-                        style='primary',
-                        height='sm',
-                        action=URIAction(label='我的Labelr檔案', uri="https://line-label.herokuapp.com/Profile")
-                    )
-                ]
-            ),
-        )
-        message = FlexSendMessage(alt_text="我的Labelr檔案", contents=bubble)
+        else:
+            print("login failed")
+        url = 'https://i.imgur.com/vi9vaYc.jpg'
+        app.logger.info("url=" + url)
+        bubble_string = flexObj.profile
+        message = FlexSendMessage(alt_text="關於作者", contents=json.loads(bubble_string))
         line_bot_api.reply_message(
             event.reply_token,
             message
         )
-
 
 @handler.add(UnfollowEvent)
 def handle_unfollow(event):
@@ -391,7 +301,9 @@ def handle_postback(event):
             if(url):
                 line_bot_api.reply_message(
                     event.reply_token,
-                    [ImageSendMessage(url, url),
+                    [
+                        TextSendMessage(text='請點選按鈕協助進行以下圖片的標註，如欲結束標記請按「結束作答」的按鈕'),
+                        ImageSendMessage(url, url),
                         TextSendMessage(text='請問上方圖片屬於哪個類別?',
                         quick_reply=QuickReply(
                             items=replyItems
