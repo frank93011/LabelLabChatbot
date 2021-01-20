@@ -2,6 +2,7 @@ import requests
 from app import APIUrl
 from linebot.models import QuickReplyButton, PostbackAction
 
+### 查詢使用者資料回傳
 def login(user_id):
     query = {"userId": user_id}
     r = requests.post(APIUrl+'user', json=query)
@@ -9,6 +10,7 @@ def login(user_id):
         if(r.json()['success']):
             return r.json()['data']
         else:
+            print(r.json())
             return False
     else:
         return False
@@ -19,6 +21,7 @@ def get_all_tasks():
         if(r.json()['success']):
             return r.json()['data']
         else:
+            print(r.json())
             return False
     else:
         return False
@@ -30,6 +33,7 @@ def get_all_options(taskId):
         if(r.json()['success']):
             return r.json()['data']
         else:
+            print(r.json())
             return False
     else:
         return False
@@ -51,6 +55,7 @@ def get_question(userId, taskId):
             result['taskId'] = taskId
             return result
         else:
+            print(r.json())
             return False
     else:
         return False
@@ -58,6 +63,8 @@ def get_question(userId, taskId):
 def startTask(userId, taskId, transactionId=None):
     options = get_all_options(taskId)
     labelObject = get_question(userId, taskId)
+    if(not labelObject):
+        return False, False
     url = labelObject['url']
     replyItems = []
     for option in options:
@@ -94,6 +101,7 @@ def answerTask(userId, taskId, labelId, answer, transactionId=None):
         if(r.json()['success']):
             return r.json()['data']
         else:
+            print(r.json())
             return False
     else:
         return False
@@ -110,6 +118,7 @@ def endTask(userId, taskId, transactionId):
         if(r.json()['success']):
             return r.json()['data']
         else:
+            print(r.json())
             return False
     else:
         return False
