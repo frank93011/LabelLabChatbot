@@ -152,7 +152,7 @@ def handle_text_message(event):
                 alt_text='所有任務', template=image_carousel_template)
             line_bot_api.reply_message(event.reply_token, template_message)
         else:
-            send_error_message()
+            send_error_message(event.reply_token)
     elif text == '關於作者':
         url = 'https://i.imgur.com/vi9vaYc.jpg'
         app.logger.info("url=" + url)
@@ -311,7 +311,7 @@ def handle_postback(event):
                     ]
                 )
             else:
-                send_error_message()
+                send_error_message(event.reply_token)
         
         elif(action == "answerTask"):
             labelId = event.postback.data.split("&")[2][8:]
@@ -333,7 +333,7 @@ def handle_postback(event):
                     ]
                 )
             else:
-                send_error_message()
+                send_error_message(event.reply_token)
         elif(action == "endTask"):
             labelId = event.postback.data.split("&")[2][8:]
             answer = event.postback.data.split("&")[3][7:]
@@ -350,7 +350,7 @@ def handle_postback(event):
                     ]
                 )
             else:
-                send_error_message()
+                send_error_message(event.reply_token)
         elif(action == "contact"):
             bubble_string = flexObj.contact
             message = FlexSendMessage(alt_text="聯絡方式", contents=json.loads(bubble_string))
@@ -395,9 +395,8 @@ def send_static_content(path):
 
 
 ### reply internal error:
-def send_error_message():
+def send_error_message(reply_token):
     line_bot_api.reply_message(
-                    event.reply_token,
-                    [   TextSendMessage(text="伺服器錯誤，請再幾分鐘後嘗試!")
-                    ]
-                )
+        reply_token,
+        [   TextSendMessage(text="伺服器錯誤，請再幾分鐘後嘗試!")]
+    )

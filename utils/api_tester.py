@@ -22,7 +22,7 @@ response = r.json()
 query = {
     "taskId":'taskId1f54c47a361b40f9',
     "taskType": "classification",
-    "userId": "U4b95521900347bfce99dda2206a20c74",
+    "userId": "U5757018f29d8fa358d147c40eab3391f",
     "labelCount": 1,
 }
 r = requests.post(APIUrl+'task/getLabel', json=query)
