@@ -886,9 +886,9 @@ def handle_postback(event):
             )
         elif(action == "contact"):
             bubble_string = """
-            {
+                {
                 "type": "bubble",
-                "size": "mega",
+                "size": "kilo",
                 "header": {
                     "type": "box",
                     "layout": "vertical",
@@ -899,33 +899,7 @@ def handle_postback(event):
                         "contents": [
                         {
                             "type": "text",
-                            "text": "FROM",
-                            "color": "#ffffff66",
-                            "size": "sm"
-                        },
-                        {
-                            "type": "text",
-                            "text": "Akihabara",
-                            "color": "#ffffff",
-                            "size": "xl",
-                            "flex": 4,
-                            "weight": "bold"
-                        }
-                        ]
-                    },
-                    {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                        {
-                            "type": "text",
-                            "text": "TO",
-                            "color": "#ffffff66",
-                            "size": "sm"
-                        },
-                        {
-                            "type": "text",
-                            "text": "Shinjuku",
+                            "text": "我的聯絡方式",
                             "color": "#ffffff",
                             "size": "xl",
                             "flex": 4,
@@ -937,7 +911,7 @@ def handle_postback(event):
                     "paddingAll": "20px",
                     "backgroundColor": "#0367D3",
                     "spacing": "md",
-                    "height": "154px",
+                    "height": "70px",
                     "paddingTop": "22px"
                 },
                 "body": {
@@ -945,108 +919,53 @@ def handle_postback(event):
                     "layout": "vertical",
                     "contents": [
                     {
-                        "type": "text",
-                        "text": "Total: 1 hour",
-                        "color": "#b7b7b7",
-                        "size": "xs"
-                    },
-                    {
-                        "type": "box",
-                        "layout": "horizontal",
-                        "contents": [
-                        {
-                            "type": "text",
-                            "text": "20:30",
-                            "size": "sm",
-                            "gravity": "center"
-                        },
-                        {
-                            "type": "box",
-                            "layout": "vertical",
-                            "contents": [
-                            {
-                                "type": "filler"
-                            },
-                            {
-                                "type": "box",
-                                "layout": "vertical",
-                                "contents": [],
-                                "cornerRadius": "30px",
-                                "height": "12px",
-                                "width": "12px",
-                                "borderColor": "#EF454D",
-                                "borderWidth": "2px"
-                            },
-                            {
-                                "type": "filler"
-                            }
-                            ],
-                            "flex": 0
-                        },
-                        {
-                            "type": "text",
-                            "text": "Akihabara",
-                            "gravity": "center",
-                            "flex": 4,
-                            "size": "sm"
-                        }
-                        ],
-                        "spacing": "lg",
-                        "cornerRadius": "30px",
-                        "margin": "xl"
-                    },
-                    {
                         "type": "box",
                         "layout": "horizontal",
                         "contents": [
                         {
                             "type": "box",
-                            "layout": "baseline",
-                            "contents": [
-                            {
-                                "type": "filler"
-                            }
-                            ],
-                            "flex": 1
-                        },
-                        {
-                            "type": "box",
                             "layout": "vertical",
                             "contents": [
                             {
-                                "type": "box",
-                                "layout": "horizontal",
-                                "contents": [
-                                {
-                                    "type": "filler"
+                                "type": "image",
+                                "url": "https://i.imgur.com/MpxFCZL.png",
+                                "size": "40px",
+                                "animated": false,
+                                "action": {
+                                "type": "uri",
+                                "label": "github",
+                                "uri": "https://github.com/frank93011"
                                 },
-                                {
-                                    "type": "box",
-                                    "layout": "vertical",
-                                    "contents": [],
-                                    "width": "2px",
-                                    "backgroundColor": "#B7B7B7"
-                                },
-                                {
-                                    "type": "filler"
-                                }
-                                ],
-                                "flex": 1
+                                "align": "start",
+                                "position": "relative",
+                                "flex": 3
                             }
                             ],
-                            "width": "12px"
+                            "width": "60px"
                         },
                         {
-                            "type": "text",
-                            "text": "Walk 4min",
-                            "gravity": "center",
-                            "flex": 4,
-                            "size": "xs",
-                            "color": "#8c8c8c"
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [
+                            {
+                                "type": "button",
+                                "action": {
+                                "type": "message",
+                                "label": "Gmail",
+                                "text": "frankchen93011@gmail.com"
+                                },
+                                "style": "primary",
+                                "color": "#E65C4F",
+                                "margin": "none",
+                                "height": "sm"
+                            }
+                            ]
                         }
-                        ],
-                        "spacing": "lg",
-                        "height": "64px"
+                        ]
+                    },
+                    {
+                        "type": "separator",
+                        "margin": "lg"
                     },
                     {
                         "type": "box",
@@ -1054,50 +973,49 @@ def handle_postback(event):
                         "contents": [
                         {
                             "type": "box",
-                            "layout": "horizontal",
+                            "layout": "vertical",
                             "contents": [
                             {
-                                "type": "text",
-                                "text": "20:34",
-                                "gravity": "center",
-                                "size": "sm"
+                                "type": "image",
+                                "url": "https://i.imgur.com/c5UR2dY.png",
+                                "size": "40px",
+                                "animated": false,
+                                "action": {
+                                "type": "uri",
+                                "label": "Linkedin",
+                                "uri": "https://www.linkedin.com/in/frank93011/"
+                                },
+                                "align": "start",
+                                "position": "relative",
+                                "flex": 3
                             }
                             ],
-                            "flex": 1
+                            "width": "60px"
                         },
                         {
                             "type": "box",
                             "layout": "vertical",
                             "contents": [
                             {
-                                "type": "filler"
-                            },
-                            {
-                                "type": "box",
-                                "layout": "vertical",
-                                "contents": [],
-                                "cornerRadius": "30px",
-                                "width": "12px",
-                                "height": "12px",
-                                "borderWidth": "2px",
-                                "borderColor": "#6486E3"
-                            },
-                            {
-                                "type": "filler"
+                                "type": "button",
+                                "action": {
+                                "type": "uri",
+                                "label": "Linkedin",
+                                "uri": "https://www.linkedin.com/in/frank93011/"
+                                },
+                                "style": "primary",
+                                "color": "#2867B2",
+                                "margin": "none",
+                                "height": "sm"
                             }
-                            ],
-                            "flex": 0
-                        },
-                        {
-                            "type": "text",
-                            "text": "Ochanomizu",
-                            "gravity": "center",
-                            "flex": 4,
-                            "size": "sm"
+                            ]
                         }
                         ],
-                        "spacing": "lg",
-                        "cornerRadius": "30px"
+                        "margin": "lg"
+                    },
+                    {
+                        "type": "separator",
+                        "margin": "lg"
                     },
                     {
                         "type": "box",
@@ -1105,96 +1023,45 @@ def handle_postback(event):
                         "contents": [
                         {
                             "type": "box",
-                            "layout": "baseline",
+                            "layout": "vertical",
                             "contents": [
                             {
-                                "type": "filler"
+                                "type": "image",
+                                "url": "https://i.imgur.com/JHWlajw.png",
+                                "size": "40px",
+                                "animated": false,
+                                "action": {
+                                "type": "uri",
+                                "label": "github",
+                                "uri": "https://github.com/frank93011"
+                                },
+                                "align": "start",
+                                "position": "relative",
+                                "flex": 3
                             }
                             ],
-                            "flex": 1
+                            "width": "60px"
                         },
                         {
                             "type": "box",
                             "layout": "vertical",
                             "contents": [
                             {
-                                "type": "box",
-                                "layout": "horizontal",
-                                "contents": [
-                                {
-                                    "type": "filler"
+                                "type": "button",
+                                "action": {
+                                "type": "uri",
+                                "label": "Github",
+                                "uri": "https://github.com/frank93011"
                                 },
-                                {
-                                    "type": "box",
-                                    "layout": "vertical",
-                                    "contents": [],
-                                    "width": "2px",
-                                    "backgroundColor": "#6486E3"
-                                },
-                                {
-                                    "type": "filler"
-                                }
-                                ],
-                                "flex": 1
+                                "style": "primary",
+                                "color": "#24292e",
+                                "margin": "none",
+                                "height": "sm"
                             }
-                            ],
-                            "width": "12px"
-                        },
-                        {
-                            "type": "text",
-                            "text": "Metro 1hr",
-                            "gravity": "center",
-                            "flex": 4,
-                            "size": "xs",
-                            "color": "#8c8c8c"
+                            ]
                         }
                         ],
-                        "spacing": "lg",
-                        "height": "64px"
-                    },
-                    {
-                        "type": "box",
-                        "layout": "horizontal",
-                        "contents": [
-                        {
-                            "type": "text",
-                            "text": "20:40",
-                            "gravity": "center",
-                            "size": "sm"
-                        },
-                        {
-                            "type": "box",
-                            "layout": "vertical",
-                            "contents": [
-                            {
-                                "type": "filler"
-                            },
-                            {
-                                "type": "box",
-                                "layout": "vertical",
-                                "contents": [],
-                                "cornerRadius": "30px",
-                                "width": "12px",
-                                "height": "12px",
-                                "borderColor": "#6486E3",
-                                "borderWidth": "2px"
-                            },
-                            {
-                                "type": "filler"
-                            }
-                            ],
-                            "flex": 0
-                        },
-                        {
-                            "type": "text",
-                            "text": "Shinjuku",
-                            "gravity": "center",
-                            "flex": 4,
-                            "size": "sm"
-                        }
-                        ],
-                        "spacing": "lg",
-                        "cornerRadius": "30px"
+                        "margin": "lg"
                     }
                     ]
                 }
