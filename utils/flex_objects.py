@@ -1,3 +1,4 @@
+import json
 
 profile = """
     {
@@ -442,6 +443,83 @@ profile = """
     }
     }
 """
+def toAccuracyJson(taskTitle, accuracy):
+    bubbleString = """
+    {
+    "type": "bubble",
+    "size": "micro",
+    "header": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+        {
+            "type": "text",
+            "text": "準確程度",
+            "color": "#ffffff",
+            "align": "start",
+            "size": "lg",
+            "gravity": "center",
+            "weight": "bold"
+        },
+        {
+            "type": "text",
+            "text": "{}%",
+            "color": "#ffffff",
+            "align": "start",
+            "size": "xs",
+            "gravity": "center",
+            "margin": "lg"
+        },
+        {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+            {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "filler"
+                }
+                ],
+                "width": "{}%",
+                "backgroundColor": "#0D8186",
+                "height": "6px"
+            }
+            ],
+            "backgroundColor": "#9FD8E36E",
+            "height": "6px",
+            "margin": "sm"
+        }
+        ],
+        "backgroundColor": "#27ACB2",
+        "paddingTop": "19px",
+        "paddingAll": "12px",
+        "paddingBottom": "16px"
+    },
+    "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+        {
+            "type": "text",
+            "text": "Title"
+        }
+        ],
+        "spacing": "md",
+        "paddingAll": "12px"
+    },
+    "styles": {
+        "footer": {
+        "separator": false
+        }
+    }
+    }
+    """
+    ### replace static var to dynamic obj
+    bubbleString = bubbleString.replace("{}", str(accuracy * 100)[:3]).replace("Title", taskTitle)
+    bubbleJson = json.loads(bubbleString)
+    return bubbleJson
 
 contact = """
     {

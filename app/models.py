@@ -776,10 +776,13 @@ def handle_postback(event):
             answer = event.postback.data.split("&")[3][7:]
             transactionId = event.postback.data.split("&")[4][14:]
             response = endTask(event.source.user_id, taskId,transactionId)
+            bubbleJson = flexObj.toAccuracyJson(response['taskTitle'], response['accuracy'])
+            flexMessage = FlexSendMessage(alt_text="準確度", contents=bubbleJson)
+
             line_bot_api.reply_message(
                 event.reply_token,
                 [   TextSendMessage(text=answer),
-                    TextSendMessage(text='準確度評估為:{}'.format(response['accuracy']))
+                    flexMessage
                 ]
             )
         elif(action == "contact"):
