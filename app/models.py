@@ -760,31 +760,45 @@ def handle_postback(event):
             if(event.postback.data.find("transactionId") != -1):
                 transactionId = event.postback.data.split("&")[4][14:]
             transaction = answerTask(event.source.user_id, taskId ,labelId, answer, transactionId)
-            url, replyItems = startTask(event.source.user_id, taskId, transaction['transactionId'])
-            line_bot_api.reply_message(
-                event.reply_token,
-                [   TextSendMessage(text="你的答案是: {}".format(answer)),
-                    ImageSendMessage(url, url),
-                    TextSendMessage(text='請問上方圖片屬於哪個類別?',
-                    quick_reply=QuickReply(
-                        items=replyItems
-                    ))
-                ]
-            )
+            if(transaction):
+                url, replyItems = startTask(event.source.user_id, taskId, transaction['transactionId'])
+                line_bot_api.reply_message(
+                    event.reply_token,
+                    [   TextSendMessage(text="你的答案是: {}".format(answer)),
+                        ImageSendMessage(url, url),
+                        TextSendMessage(text='請問上方圖片屬於哪個類別?',
+                        quick_reply=QuickReply(
+                            items=replyItems
+                        ))
+                    ]
+                )
+            else:
+                line_bot_api.reply_message(
+                    event.reply_token,
+                    [   TextSendMessage(text="伺服器錯誤，請再幾分鐘後嘗試!")
+                    ]
+                )
         elif(action == "endTask"):
             labelId = event.postback.data.split("&")[2][8:]
             answer = event.postback.data.split("&")[3][7:]
             transactionId = event.postback.data.split("&")[4][14:]
             response = endTask(event.source.user_id, taskId,transactionId)
-            bubbleJson = flexObj.toAccuracyJson(response['taskTitle'], response['accuracy'])
-            flexMessage = FlexSendMessage(alt_text="準確度", contents=bubbleJson)
+            if(response):
+                bubbleJson = flexObj.toAccuracyJson(response['taskTitle'], response['accuracy'])
+                flexMessage = FlexSendMessage(alt_text="準確度", contents=bubbleJson)
 
-            line_bot_api.reply_message(
-                event.reply_token,
-                [   TextSendMessage(text=answer),
-                    flexMessage
-                ]
-            )
+                line_bot_api.reply_message(
+                    event.reply_token,
+                    [   TextSendMessage(text=answer),
+                        flexMessage
+                    ]
+                )
+            else:
+                line_bot_api.reply_message(
+                    event.reply_token,
+                    [   TextSendMessage(text="伺服器錯誤，請再幾分鐘後嘗試!")
+                    ]
+                )
         elif(action == "contact"):
             bubble_string = flexObj.contact
             message = FlexSendMessage(alt_text="聯絡方式", contents=json.loads(bubble_string))

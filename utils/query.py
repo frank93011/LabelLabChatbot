@@ -6,14 +6,20 @@ def login(user_id):
     query = {"userId": user_id}
     r = requests.post(APIUrl+'user', json=query)
     if(r.ok):
-        return r.json()
+        if(r.json()['success']):
+            return r.json()['data']
+        else:
+            return False
     else:
         return False
 
 def get_all_tasks():
     r = requests.get(APIUrl+'tasks')
     if(r.ok):
-        return r.json()
+        if(r.json()['success']):
+            return r.json()['data']
+        else:
+            return False
     else:
         return False
 
@@ -21,7 +27,12 @@ def get_all_options(taskId):
     query = {"taskId": taskId}
     r = requests.post(APIUrl+'task/getQuestion', json=query)
     if(r.ok):
-        return r.json()
+        if(r.json()['success']):
+            return r.json()['data']
+        else:
+            return False
+    else:
+        return False
 
 def get_question(userId, taskId):
     query = {
@@ -33,11 +44,16 @@ def get_question(userId, taskId):
     r = requests.post(APIUrl+'task/getLabel', json=query)
     result = {}
     if(r.ok):
-        response = r.json()
-        result['url'] = response['labelList'][0]['imagePath'].replace("http", "https")
-        result['labelId'] = response['labelList'][0]['labelId']
-        result['taskId'] = taskId
-        return result
+        if(r.json()['success']):
+            response = r.json()['data']
+            result['url'] = response['labelList'][0]['imagePath'].replace("http", "https")
+            result['labelId'] = response['labelList'][0]['labelId']
+            result['taskId'] = taskId
+            return result
+        else:
+            return False
+    else:
+        return False
 
 def startTask(userId, taskId, transactionId=None):
     options = get_all_options(taskId)
@@ -75,8 +91,12 @@ def answerTask(userId, taskId, labelId, answer, transactionId=None):
         query.update({'transactionId': transactionId})
     r = requests.post(APIUrl+'saveAnswer', json=query)
     if(r.ok):
-        response = r.json()
-        return response
+        if(r.json()['success']):
+            return r.json()['data']
+        else:
+            return False
+    else:
+        return False
 
 def endTask(userId, taskId, transactionId):
     query = {
@@ -87,5 +107,9 @@ def endTask(userId, taskId, transactionId):
     }
     r = requests.post(APIUrl+'accuracy', json=query)
     if(r.ok):
-        response = r.json()
-        return response
+        if(r.json()['success']):
+            return r.json()['data']
+        else:
+            return False
+    else:
+        return False
