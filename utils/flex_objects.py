@@ -1,4 +1,448 @@
 
+profile = """
+    {
+    "type": "bubble",
+    "size": "mega",
+    "hero": {
+        "type": "image",
+        "url": "https://i.imgur.com/vi9vaYc.jpg",
+        "size": "full",
+        "aspectMode": "cover",
+        "aspectRatio": "20:15"
+    },
+    "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+        {
+            "type": "text",
+            "text": "陳漢威 Frank",
+            "size": "xl",
+            "weight": "bold"
+        },
+        {
+            "type": "text",
+            "text": "學歷",
+            "color": "#787878",
+            "size": "lg",
+            "weight": "bold",
+            "margin": "md"
+        },
+        {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+            {
+                "type": "text",
+                "text": "2013.7",
+                "size": "sm",
+                "gravity": "center"
+            },
+            {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "filler"
+                },
+                {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [],
+                    "cornerRadius": "30px",
+                    "height": "12px",
+                    "width": "12px",
+                    "borderColor": "#EF454D",
+                    "borderWidth": "2px"
+                },
+                {
+                    "type": "filler"
+                }
+                ],
+                "flex": 0
+            },
+            {
+                "type": "text",
+                "text": "國立花蓮高級中學",
+                "gravity": "center",
+                "flex": 4,
+                "size": "sm",
+                "weight": "bold"
+            }
+            ],
+            "spacing": "lg",
+            "cornerRadius": "30px",
+            "margin": "md"
+        },
+        {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+            {
+                "type": "box",
+                "layout": "baseline",
+                "contents": [
+                {
+                    "type": "filler"
+                }
+                ],
+                "flex": 1
+            },
+            {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                    {
+                        "type": "filler"
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [],
+                        "width": "2px",
+                        "backgroundColor": "#B7B7B7"
+                    },
+                    {
+                        "type": "filler"
+                    }
+                    ],
+                    "flex": 1
+                }
+                ],
+                "width": "12px"
+            },
+            {
+                "type": "text",
+                "text": " ",
+                "gravity": "center",
+                "flex": 4,
+                "size": "xs",
+                "color": "#8c8c8c"
+            }
+            ],
+            "spacing": "lg",
+            "height": "20px"
+        },
+        {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+            {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                {
+                    "type": "text",
+                    "text": "2016.7",
+                    "gravity": "center",
+                    "size": "sm"
+                }
+                ],
+                "flex": 1
+            },
+            {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "filler"
+                },
+                {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [],
+                    "cornerRadius": "30px",
+                    "width": "12px",
+                    "height": "12px",
+                    "borderWidth": "2px",
+                    "borderColor": "#6486E3"
+                },
+                {
+                    "type": "filler"
+                }
+                ],
+                "flex": 0
+            },
+            {
+                "type": "text",
+                "text": "臺灣大學 資訊管理學系",
+                "gravity": "center",
+                "flex": 4,
+                "size": "sm",
+                "weight": "bold"
+            }
+            ],
+            "spacing": "lg",
+            "cornerRadius": "30px"
+        },
+        {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+            {
+                "type": "box",
+                "layout": "baseline",
+                "contents": [
+                {
+                    "type": "filler"
+                }
+                ],
+                "flex": 1
+            },
+            {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                    {
+                        "type": "filler"
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [],
+                        "width": "2px",
+                        "backgroundColor": "#6486E3"
+                    },
+                    {
+                        "type": "filler"
+                    }
+                    ],
+                    "flex": 1
+                }
+                ],
+                "width": "12px"
+            },
+            {
+                "type": "text",
+                "text": " ",
+                "gravity": "center",
+                "flex": 4,
+                "size": "xs",
+                "color": "#8c8c8c"
+            }
+            ],
+            "spacing": "lg",
+            "height": "20px"
+        },
+        {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+            {
+                "type": "text",
+                "text": "2020.7",
+                "gravity": "center",
+                "size": "sm"
+            },
+            {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "filler"
+                },
+                {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [],
+                    "cornerRadius": "30px",
+                    "width": "12px",
+                    "height": "12px",
+                    "borderColor": "#6486E3",
+                    "borderWidth": "2px"
+                },
+                {
+                    "type": "filler"
+                }
+                ],
+                "flex": 0
+            },
+            {
+                "type": "text",
+                "text": "臺灣大學 資訊管理學研究所",
+                "gravity": "center",
+                "flex": 4,
+                "size": "sm",
+                "weight": "bold"
+            }
+            ],
+            "spacing": "lg",
+            "cornerRadius": "30px"
+        },
+        {
+            "type": "separator",
+            "margin": "lg"
+        },
+        {
+            "type": "text",
+            "text": "工作經歷",
+            "color": "#787878",
+            "size": "lg",
+            "weight": "bold",
+            "margin": "xl"
+        },
+        {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+            {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "image",
+                    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Microsoft_logo_-_2012_%28vertical%29.svg/663px-Microsoft_logo_-_2012_%28vertical%29.svg.png",
+                    "aspectMode": "fit",
+                    "size": "full"
+                }
+                ],
+                "width": "40px",
+                "height": "40px"
+            },
+            {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "text",
+                    "text": "Microsoft Consulting Services",
+                    "weight": "bold",
+                    "color": "#999999"
+                },
+                {
+                    "type": "text",
+                    "text": "Software Develop Intern",
+                    "color": "#999999"
+                }
+                ],
+                "offsetStart": "12px",
+                "offsetBottom": "2.5px"
+            }
+            ],
+            "margin": "lg"
+        },
+        {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+            {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "image",
+                    "url": "https://i.imgur.com/VGqXUXl.png",
+                    "aspectMode": "fit",
+                    "size": "full"
+                }
+                ],
+                "width": "40px",
+                "height": "40px"
+            },
+            {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "text",
+                    "text": "Logiscool",
+                    "weight": "bold",
+                    "color": "#999999"
+                },
+                {
+                    "type": "text",
+                    "text": "Technical Assistant",
+                    "color": "#999999"
+                }
+                ],
+                "offsetStart": "12px",
+                "offsetBottom": "2.5px"
+            }
+            ],
+            "margin": "md"
+        },
+        {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+            {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "image",
+                    "url": "https://i.imgur.com/pNonon4.png",
+                    "aspectMode": "fit",
+                    "size": "full"
+                }
+                ],
+                "width": "40px",
+                "height": "40px"
+            },
+            {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "text",
+                    "text": "PT.ICE Messenger",
+                    "weight": "bold",
+                    "color": "#999999"
+                },
+                {
+                    "type": "text",
+                    "text": "Android Intern",
+                    "color": "#999999"
+                }
+                ],
+                "offsetStart": "12px",
+                "offsetBottom": "2.5px"
+            }
+            ],
+            "margin": "md"
+        }
+        ]
+    },
+    "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+        {
+            "type": "button",
+            "action": {
+            "type": "postback",
+            "label": "更多專案經歷",
+            "data": "action=projectExperience&taskId=0",
+            "displayText": "更多專案經歷"
+            },
+            "height": "sm"
+        },
+        {
+            "type": "separator"
+        },
+        {
+            "type": "button",
+            "action": {
+            "type": "postback",
+            "label": "聯絡方式",
+            "data": "action=contact&taskId=0",
+            "displayText": "聯絡方式"
+            },
+            "height": "sm"
+        }
+        ]
+    }
+    }
+"""
+
 contact = """
     {
     "type": "bubble",
