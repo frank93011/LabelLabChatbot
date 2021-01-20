@@ -22,6 +22,7 @@ import os
 import sys
 import tempfile
 from utils.query import *
+import utils.flex_objects as flexObj
 from flask import Flask, request, abort, send_from_directory
 
 
@@ -1068,7 +1069,13 @@ def handle_postback(event):
                 event.reply_token,
                 message
             )
-
+        elif(action == "projectExperience"):
+            bubble_string = flexObj.projectExperience
+            message = FlexSendMessage(alt_text="專案經歷", contents=json.loads(bubble_string))
+            line_bot_api.reply_message(
+                event.reply_token,
+                message
+            )
 @handler.add(BeaconEvent)
 def handle_beacon(event):
     line_bot_api.reply_message(
