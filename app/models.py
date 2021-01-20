@@ -931,11 +931,6 @@ def handle_postback(event):
                                 "url": "https://i.imgur.com/MpxFCZL.png",
                                 "size": "40px",
                                 "animated": false,
-                                "action": {
-                                "type": "uri",
-                                "label": "github",
-                                "uri": "https://github.com/frank93011"
-                                },
                                 "align": "start",
                                 "position": "relative",
                                 "flex": 3
@@ -950,9 +945,10 @@ def handle_postback(event):
                             {
                                 "type": "button",
                                 "action": {
-                                "type": "message",
+                                "type": "postback",
                                 "label": "Gmail",
-                                "text": "frankchen93011@gmail.com"
+                                "data": "action=mailAddress&taskId=0",
+                                "displayText": "frankchen93011@gmail.com"
                                 },
                                 "style": "primary",
                                 "color": "#E65C4F",
