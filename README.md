@@ -3,6 +3,8 @@
 <img src="https://i.imgur.com/jZSiyQv.png" alt="logo" width="150">
 
 ## Finished product
+(The project is running on Heroku server, so the chatbot response at first would be a little slow and delay. Sorry for the inconvenience.)
+
 **LINE ID:** @124ybfnk
 
 **QR Code:**
